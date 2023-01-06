@@ -1,0 +1,637 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="EmployeeMasterPage.master.cs" Inherits="EmployeeMasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+  <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>Enterprise Dashboard</title>
+    <!-- Favicon-->
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap Core Css -->
+    <link href="../../plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Waves Effect Css -->
+    <link href="../../plugins/node-waves/waves.css" rel="stylesheet" />
+
+    <!-- Animation Css -->
+    <link href="../../plugins/animate-css/animate.css" rel="stylesheet" />
+
+      <!-- Colorpicker Css -->
+    <link href="../../plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css" rel="stylesheet" />
+
+    
+    <!-- Dropzone Css -->
+    <link href="../../plugins/dropzone/dropzone.css" rel="stylesheet">
+
+    <!-- Multi Select Css -->
+    <link href="../../plugins/multi-select/css/multi-select.css" rel="stylesheet">
+
+    <!-- Bootstrap Spinner Css -->
+    <link href="../../plugins/jquery-spinner/css/bootstrap-spinner.css" rel="stylesheet">
+
+    <!-- Bootstrap Tagsinput Css -->
+    <link href="../../plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+
+    <!-- Bootstrap Select Css -->
+    <link href="../../plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+
+    <!-- noUISlider Css -->
+    <link href="../../plugins/nouislider/nouislider.min.css" rel="stylesheet" />
+
+    <!-- JVectorMap Css -->
+    <link href="plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" />
+
+    <!-- Morris Css -->
+    <link href="../../plugins/morrisjs/morris.css" rel="stylesheet" />
+   
+    <!-- Bootstrap Select Css -->
+    <link href="../../plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+
+    <!-- Custom Css -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
+    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+    <link href="../../css/themes/all-themes.css" rel="stylesheet" />
+
+<%--    <script type="text/javascript" src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js'></script>
+<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js'></script>
+<link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css'
+    media="screen" />
+<!-- Bootstrap -->
+<!-- Bootstrap DatePicker -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" type="text/css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js" type="text/javascript"></script>--%>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="theme-red">   <!--"theme-red"-->
+    <form id="form1" runat="server">
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p style="text-align:center;">Please wait...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+    <!-- Overlay For Sidebars -->
+    <div class="overlay"></div>
+    <!-- #END# Overlay For Sidebars -->
+    <!-- Search Bar -->
+   <%-- <div class="search-bar">
+        <div class="search-icon">
+            <i class="material-icons">search</i>
+        </div>
+        <input type="text" placeholder="START TYPING...">
+        <div class="close-search">
+            <i class="material-icons">close</i>
+        </div>
+    </div>--%>
+    <!-- #END# Search Bar -->
+    <!-- Top Bar -->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a  class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+                <a  class="bars"></a>
+              
+                <div>  <asp:Image ID="Image1" runat="server" height="60px"  style="float:left;margin-right:auto"/>
+               <a class="navbar-brand" href="Default.aspx" style="margin-left:25px"><h4>
+                    <asp:Label ID="lblCmpnyNm" runat="server" Text="0"></asp:Label></h4></a></div><!--Visionary Life Science-->
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                <div><h5> <li>District : <asp:Label ID="lblBranchnm" runat="server" Text="0" ForeColor="White"></asp:Label></li></h5></div>
+                    <!-- Call Search -->
+<%--                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>--%>
+                    <!-- #END# Call Search -->
+                    <!-- Notifications -->
+                  <%--  <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                            <i class="material-icons">notifications</i>
+                            <span class="label-count">7</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="header">NOTIFICATIONS</li>
+                            <li class="body">
+                                <ul class="menu">
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-light-green">
+                                                <i class="material-icons">person_add</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4>12 new members joined</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 14 mins ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-cyan">
+                                                <i class="material-icons">add_shopping_cart</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4>4 sales made</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 22 mins ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-red">
+                                                <i class="material-icons">delete_forever</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4><b>Nancy Doe</b> deleted account</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 3 hours ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-orange">
+                                                <i class="material-icons">mode_edit</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4><b>Nancy</b> changed name</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 2 hours ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-blue-grey">
+                                                <i class="material-icons">comment</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4><b>John</b> commented your post</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 4 hours ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-light-green">
+                                                <i class="material-icons">cached</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4><b>John</b> updated status</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 3 hours ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">
+                                            <div class="icon-circle bg-purple">
+                                                <i class="material-icons">settings</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4>Settings updated</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> Yesterday
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="footer">
+                                <a href="javascript:void(0);">View All Notifications</a>
+                            </li>
+                        </ul>
+                    </li>--%>
+                    <!-- #END# Notifications -->
+    
+                    <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">more_vert</i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- #Top Bar -->
+    <section>
+        <!-- Left Sidebar -->
+          <aside id="leftsidebar" class="sidebar">
+            <!-- User Info -->
+            <div class="user-info">
+               
+                <div class="info-container">
+                   <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <b><asp:Label ID="lblUsernm" runat="server" Text="" Font-Size="X-Large"></asp:Label></b></div>
+                    <div class="email"><h6>
+                        <asp:Label ID="lblDesignation" runat="server" Text="CEO" Visible="false"></asp:Label></h6>
+
+                    </div>
+                    <div class="btn-group user-helper-dropdown">
+                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="UserProfile.aspx"><i class="material-icons">person</i>Profile</a></li>
+                            <li role="separator" class="divider"></li>
+                            <!--<li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
+                            <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
+                            <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
+                            <li role="separator" class="divider"></li>-->
+                            <li><a href="Login.aspx"><i class="material-icons">input</i>Sign Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- #User Info -->
+            <!-- Menu -->
+            <div class="menu">
+                <ul class="list">
+                   
+                    <li class="header" ><a href="Default.aspx" style="font-size:large">Dashboard</a></li>
+                  <li role="separator" class="divider"></li>
+
+                    <li class="header">Employee</li>
+                    <li>
+                        <a class="menu-toggle">
+                            <i class="material-icons">assignment_ind</i>
+                            <span>Employee Management</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                 <a href="EmployeeDetails.aspx">Employees</a>
+                            </li>
+                            <li>
+                            <a class="menu-toggle">
+                               <span>Employee Health</span> 
+
+                            </a>
+                                <ul class="ml-menu">
+                                    <li>
+                                        <a href="EmployeeHealthDetails.aspx" >
+                                            <span>Employee Health Package</span>
+
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="TestResultUpload.aspx">
+                                            <span>Test Result Bulk Upload</span>
+                                        </a>
+                                    </li>
+                                 </ul>
+                            </li>
+                          <%--  <li>
+                                <a href="EmployeeInsuranceDetails.aspx">Employee Health Insurance</a>
+                            </li>--%>
+                          <%--  <li>
+                                <a href="TestDetails.aspx">Assign Test</a>
+                            </li>--%>
+                             <li>
+                                <a href="EmployeeBulkUploadDetails.aspx">Employees Bulk Upload</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="header">Master</li>
+                    <li>
+                        <a class="menu-toggle">
+                            <i class="material-icons">assignment</i>
+                            <span>Master Management</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="Department.aspx">Department</a>
+                            </li>
+                            <li>
+                                <a  class="menu-toggle">
+                                    District
+                                </a>
+                                <ul class="ml-menu">
+                                    <li>
+                                        <a href="Branch.aspx">
+                                            <span>District Master</span>
+                                        </a>
+                                    </li>
+                                    <%-- <li>
+                                        <a href="UserBranchAssign.aspx">
+                                            <span>User Branch Assign</span>
+                                        </a>
+                                    </li>
+                                     <li>
+                                        <a href="SubBranchDetails.aspx">
+                                            <span>Branch-SubBranch Assign</span>
+                                        </a>
+                                    </li>--%>
+                                </ul>
+                                <%--<a href="Branch.aspx">Branch</a>--%>
+                            </li>
+                            <li>
+                                <a href="Test.aspx">Test</a>
+                            </li>
+                            <li>
+                                <a href="Hospital_LabMaster.aspx">Path Lab Master</a>
+                            </li>
+                           <%--  <li>
+                                <a href="UserDetails.aspx">User Registration</a>
+                            </li>--%>
+                        </ul>
+                    </li>
+
+			 <li class="header"> Reports</li>
+                       <li>
+                          <a class="menu-toggle">
+                            <i class="material-icons">assignment</i>
+                            <span>MIS Reports</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="MIS_Reports.aspx">MIS Reports</a>
+                                </li>
+                            </ul>
+                      </li>
+                </ul>
+            </div>
+           <!-- Footer -->
+            <div class="legal">
+                <div class="copyright">
+                  Powered By <a href="https://visionarylifescience.com">Visionary Life Science</a>.&copy; 2021
+                </div>
+               <%-- <div class="version">
+                    <b>Version: </b> 1.0.5
+                </div>--%>
+            </div>
+            <!-- #Footer -->   
+        </aside>
+        <!-- #END# Left Sidebar -->
+        <!-- Right Sidebar -->
+        <aside id="rightsidebar" class="right-sidebar">
+            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                <li role="presentation" class="active"><a href="#skins" data-toggle="tab">SKINS</a></li>
+                <li role="presentation"><a href="#settings" data-toggle="tab">SETTINGS</a></li>
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active in active" id="skins">
+                    <ul class="demo-choose-skin">
+                        <li data-theme="red" class="active">
+                            <div class="red" id="r"></div><a href="Default.aspx?colorId=1"></a>
+                            <span>Red</span>
+                        </li>
+                        <li data-theme="pink">
+                            <div class="pink" id="p"></div><a href="Default.aspx?colorId=2"></a>
+                            <span>Pink</span>
+                        </li>
+                        <li data-theme="purple">
+                            <div class="purple"  id="prpl"></div><a href="Default.aspx?colorId=3"></a>
+                            <span>Purple</span>
+                        </li>
+                        <li data-theme="deep-purple">
+                            <div class="deep-purple" id="dprpl"></div>
+                            <span>Deep Purple</span>
+                        </li>
+                        <li data-theme="indigo">
+                            <div class="indigo" id="indgo"></div>
+                            <span>Indigo</span>
+                        </li>
+                        <li data-theme="blue">
+                            <div class="blue" id="bl"></div>
+                            <span>Blue</span>
+                        </li>
+                        <li data-theme="light-blue">
+                            <div class="light-blue" id="lgtbl"></div>
+                            <span>Light Blue</span>
+                        </li>
+                        <li data-theme="cyan">
+                            <div class="cyan" id="cyn"></div>
+                            <span>Cyan</span>
+                        </li>
+                        <li data-theme="teal">
+                            <div class="teal" id="tl"></div>
+                            <span>Teal</span>
+                        </li>
+                        <li data-theme="green">
+                            <div class="green" id="grn"></div>
+                            <span>Green</span>
+                        </li>
+                        <li data-theme="light-green">
+                            <div class="light-green" id="lgtrn"></div>
+                            <span>Light Green</span>
+                        </li>
+                        <li data-theme="lime">
+                            <div class="lime" id="lm"></div>
+                            <span>Lime</span>
+                        </li>
+                        <li data-theme="yellow">
+                            <div class="yellow" id="ylo"></div>
+                            <span>Yellow</span>
+                        </li>
+                        <li data-theme="amber">
+                            <div class="amber" id="ambr"></div>
+                            <span>Amber</span>
+                        </li>
+                        <li data-theme="orange">
+                            <div class="orange" id="orng"></div>
+                            <span>Orange</span>
+                        </li>
+                        <li data-theme="deep-orange">
+                            <div class="deep-orange" id="dporng"></div>
+                            <span>Deep Orange</span>
+                        </li>
+                        <li data-theme="brown">
+                            <div class="brown" id="brn"></div>
+                            <span>Brown</span>
+                        </li>
+                        <li data-theme="grey">
+                            <div class="grey" id="gry"></div>
+                            <span>Grey</span>
+                        </li>
+                        <li data-theme="blue-grey">
+                            <div class="blue-grey" id="blugry"></div>
+                            <span>Blue Grey</span>
+                        </li>
+                        <li data-theme="black">
+                            <div class="black" id="blk"></div>
+                            <span>Black</span>
+                        </li>
+                    </ul>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="settings">
+                    <div class="demo-settings">
+                        <p>GENERAL SETTINGS</p>
+                        <ul class="setting-list">
+                            <li>
+                                <span>Report Panel Usage</span>
+                                <div class="switch">
+                                    <label><input type="checkbox" checked><span class="lever"></span></label>
+                                </div>
+                            </li>
+                            <li>
+                                <span>Email Redirect</span>
+                                <div class="switch">
+                                    <label><input type="checkbox"><span class="lever"></span></label>
+                                </div>
+                            </li>
+                        </ul>
+                        <p>SYSTEM SETTINGS</p>
+                        <ul class="setting-list">
+                            <li>
+                                <span>Notifications</span>
+                                <div class="switch">
+                                    <label><input type="checkbox" checked><span class="lever"></span></label>
+                                </div>
+                            </li>
+                            <li>
+                                <span>Auto Updates</span>
+                                <div class="switch">
+                                    <label><input type="checkbox" checked><span class="lever"></span></label>
+                                </div>
+                            </li>
+                        </ul>
+                        <p>ACCOUNT SETTINGS</p>
+                        <ul class="setting-list">
+                            <li>
+                                <span>Offline</span>
+                                <div class="switch">
+                                    <label><input type="checkbox"><span class="lever"></span></label>
+                                </div>
+                            </li>
+                            <li>
+                                <span>Location Permission</span>
+                                <div class="switch">
+                                    <label><input type="checkbox" checked><span class="lever"></span></label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <!-- #END# Right Sidebar -->
+    </section>
+
+    
+    <div>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+    
+     <!-- Jquery Core Js -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+  
+    <!--Bootstrap Core Js-->
+    <script src="plugins/bootstrap/js/bootstrap.js"></script>
+
+    <!-- Google Maps API Js -->
+    <script src="https://maps.google.com/maps/api/js?v=3&sensor=false"></script>
+
+    <!--Select Plugin Js-->
+    <script src="../../plugins/bootstrap-select/js/bootstrap-select.js"></script>
+
+    <!--Slimscroll Plugin Js-->
+    <script src="../../plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+    <!--Waves Effect Plugin Js-->
+    <script src="../../plugins/node-waves/waves.js"></script>
+
+    <!-- Autosize Plugin Js -->
+    <script src="../../plugins/autosize/autosize.js"></script>
+
+    <!-- Moment Plugin Js -->
+    <script src="plugins/momentjs/moment.js"></script>
+
+    <!-- Bootstrap Material Datetime Picker Plugin Js -->
+    <script src="plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+
+    <!-- Bootstrap Datepicker Plugin Js -->
+    <script src="plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+
+    <!-- Jquery CountTo Plugin Js -->
+    <script src="plugins/jquery-countto/jquery.countTo.js"></script>
+
+    <!-- Morris Plugin Js -->
+    <script src="plugins/raphael/raphael.min.js"></script>
+    <script src="plugins/morrisjs/morris.js"></script>
+   
+    <!--Chart Plugins Js-->
+    <%--<script src="../../plugins/chartjs/Chart.bundle.js"></script>--%>
+     <script src="plugins/chartjs/Chart.js"></script>
+        <script src="../../plugins/chartjs/chart306.min.js"></script>
+  <%--  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>--%>
+
+    <!-- Flot Charts Plugin Js -->
+    <script src="plugins/flot-charts/jquery.flot.js"></script>
+    <script src="plugins/flot-charts/jquery.flot.resize.js"></script>
+    <script src="plugins/flot-charts/jquery.flot.pie.js"></script>
+    <script src="plugins/flot-charts/jquery.flot.categories.js"></script>
+    <script src="plugins/flot-charts/jquery.flot.time.js"></script>
+
+    <!-- Sparkline Chart Plugin Js -->
+    <script src="plugins/jquery-sparkline/jquery.sparkline.js"></script>
+
+    <!-- JVectorMap Plugin Js -->
+    <script src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+
+    
+    <!-- Jquery DataTable Plugin Js -->
+    <script src="plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+
+    <!--Custom Js-->
+    <script src="../../js/admin.js"></script>
+     <script src="../../js/pages/tables/jquery-datatable.js"></script>
+     <%--   <script src="../../js/pages/charts/chartjs.js"></script>--%>
+
+    <!--<script src=" js/pages/charts/chartjs.js"></script>-->
+    <script src="t_chartjs.js"></script>
+  
+
+
+    <script src="js/pages/forms/basic-form-elements.js"></script>
+   <%-- <script src="js/pages/forms/advanced-form-elements.js"></script>--%>
+
+    <!--Demo Js-->
+    <script src="../../js/demo.js"></script>
+  <%--  <script src="js/pages/tables/jquery-datatable.js"></script>--%>
+    <!-- Morris Plugin Js -->
+    <!--<script src="plugins/raphael/raphael.min.js"></script>-->
+    <!--<script src="plugins/morrisjs/morris.js"></script>-->
+    <!--<script src="t_morris.js"></script>-->
+
+<%--    <script src="js/jquery.js"></script>        
+<script src="js/bootstrap.js"></script>--%>
+
+<%--   
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>--%>
+</body>
+</html>
+
